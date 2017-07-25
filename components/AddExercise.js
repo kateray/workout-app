@@ -11,7 +11,7 @@ class AddExerciseInternal extends React.Component {
   }
 
   submitExercise(){
-    this.props.addExercise({categoryName: this.props.categoryName, exercise: {name: this.state.text}})
+    this.props.addExercise(this.props.categoryName, {name: this.state.text})
     this.setState({text: ''})
   }
 
@@ -53,7 +53,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    addExercise: (payload) => dispatch(addExercise(payload))
+    addExercise: (categoryName, exercise) => dispatch(addExercise(categoryName, exercise))
   }
 }
 

@@ -1,5 +1,16 @@
-import { ADD_CATEGORY, ADD_EXERCISE } from '../constants'
+import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE } from '../constants'
 import { AsyncStorage } from 'react-native'
+
+function guid() {
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
+
+function s4() {
+  return Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
+}
 
 export function addCategory(payload) {
   return {
@@ -8,9 +19,19 @@ export function addCategory(payload) {
   }
 }
 
-export function addExercise(payload) {
+export function addExercise(categoryName, payload) {
+  payload = Object.assign({id: guid()}, payload)
   return {
+    categoryName,
     payload,
     type: ADD_EXERCISE
+  }
+}
+
+export function updateExercise(categoryName, payload) {
+  return {
+    categoryName,
+    payload,
+    type: UPDATE_EXERCISE
   }
 }

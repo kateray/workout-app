@@ -1,5 +1,5 @@
 import { app } from './index'
-import { ADD_CATEGORY, ADD_EXERCISE } from '../constants'
+import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE } from '../constants'
 
 describe('root reducer', () => {
   it('should return the initial state', () => {

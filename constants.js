@@ -1,2 +1,3 @@
 export const ADD_CATEGORY = 'ADD_CATEGORY'
 export const ADD_EXERCISE = 'ADD_EXERCISE'
+export const UPDATE_EXERCISE = 'UPDATE_EXERCISE'
