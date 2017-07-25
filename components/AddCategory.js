@@ -17,10 +17,14 @@ export class AddCategory extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Email:</Text>
-        <TextInput style={styles.input} onChangeText={(text) => this.setState({text})} onSubmitEditing={() => { this.submitCategory()} } value={this.state.text} />
-        <TouchableOpacity>
-          <Text style={styles.button} onPress={() => { this.submitCategory()} }>Submit</Text>
-        </TouchableOpacity>
+        <TextInput
+          autoCapitalize='words'
+          style={styles.input}
+          returnKeyType='done'
+          enablesReturnKeyAutomatically={true}
+          placeholder='Add a Category'
+          onChangeText={(text) => this.setState({text})}
+          onSubmitEditing={() => { this.submitCategory()} } value={this.state.text} />
       </View>
     )
   }
