@@ -1,15 +1,15 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import {StyleSheet, Text, FlatList} from 'react-native'
 import {baseStyles} from '../BaseStyles'
-import {CategoryItem} from './CategoryItem'
+import {ExerciseItem} from './ExerciseItem'
 
-export class CategoryList extends PureComponent {
+class ExerciseListInternal extends PureComponent {
 
   _keyExtractor = (item, index) => item.name
 
   _renderItem = ({item}) => (
-    <CategoryItem
-      chooseCategory={this.props.chooseCategory}
+    <ExerciseItem
       {...item}
     />
   )
@@ -17,7 +17,7 @@ export class CategoryList extends PureComponent {
   render(){
     return (
       <FlatList style={styles.container}
-        data={this.props.categories}
+        data={this.props.exercises}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
       />
@@ -42,3 +42,14 @@ const styles = StyleSheet.create({
     width: 250
   }
 })
+
+function mapStateToProps (state, ownProps) {
+  const category = state.categories.find(c => c.name === ownProps.categoryName)
+  return {
+    exercises: category.exercises
+  }
+}
+
+export const ExerciseList = connect(
+  mapStateToProps
+)(ExerciseListInternal)

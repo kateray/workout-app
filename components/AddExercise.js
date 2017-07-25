@@ -1,15 +1,17 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { addExercise } from '../actions'
 import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native'
 import {baseStyles} from '../BaseStyles'
 
-export class AddCategory extends React.Component {
+class AddExerciseInternal extends React.Component {
   constructor(props) {
     super(props);
     this.state = { text: '' };
   }
 
-  submitCategory(){
-    this.props.addCategory({name: this.state.text})
+  submitExercise(){
+    this.props.addExercise({categoryName: this.props.categoryName, exercise: {name: this.state.text}})
     this.setState({text: ''})
   }
 
@@ -21,10 +23,9 @@ export class AddCategory extends React.Component {
           style={styles.input}
           returnKeyType='done'
           enablesReturnKeyAutomatically={true}
-          placeholder='Add a Category'
+          placeholder='Add an Exercise'
           onChangeText={(text) => this.setState({text})}
-          onSubmitEditing={() => { this.submitCategory()} }
-          value={this.state.text} />
+          onSubmitEditing={() => { this.submitExercise()} } value={this.state.text} />
       </View>
     )
   }
@@ -45,3 +46,18 @@ const styles = StyleSheet.create({
     width: 250
   }
 })
+
+function mapStateToProps (state) {
+  return {}
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    addExercise: (payload) => dispatch(addExercise(payload))
+  }
+}
+
+export const AddExercise = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddExerciseInternal)

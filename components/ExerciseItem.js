@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react'
-import {StyleSheet, View, Button} from 'react-native'
+import {StyleSheet, View, Text} from 'react-native'
 import {baseStyles} from '../BaseStyles'
 
-export class CategoryItem extends PureComponent {
+export class ExerciseItem extends PureComponent {
   render(){
     return (
       <View style={styles.container}>
-        <Button
-          onPress={() => this.props.chooseCategory(this.props.name)}
-          title={this.props.name} />
+        <Text>
+          {this.props.name}
+        </Text>
       </View>
     )
   }
