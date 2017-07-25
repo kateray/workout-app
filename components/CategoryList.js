@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import {StyleSheet, Text, FlatList} from 'react-native'
 import {baseStyles} from '../BaseStyles'
 import {CategoryItem} from './CategoryItem'
 
-export class CategoryList extends PureComponent {
+class CategoryListInternal extends PureComponent {
 
   _keyExtractor = (item, index) => item.name
 
@@ -42,3 +43,13 @@ const styles = StyleSheet.create({
     width: 250
   }
 })
+
+function mapStateToProps (state) {
+  return {
+    categories: state.categories
+  }
+}
+
+export const CategoryList = connect(
+  mapStateToProps
+)(CategoryListInternal)

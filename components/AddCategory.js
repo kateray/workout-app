@@ -1,8 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { addCategory } from '../actions'
 import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native'
 import {baseStyles} from '../BaseStyles'
 
-export class AddCategory extends React.Component {
+class AddCategoryInternal extends React.Component {
   constructor(props) {
     super(props);
     this.state = { text: '' };
@@ -45,3 +47,18 @@ const styles = StyleSheet.create({
     width: 250
   }
 })
+
+function mapStateToProps (state) {
+  return {}
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    addCategory: (payload) => dispatch(addCategory(payload))
+  }
+}
+
+export const AddCategory = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddCategoryInternal)
