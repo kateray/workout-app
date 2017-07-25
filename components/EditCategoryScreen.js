@@ -9,11 +9,14 @@ export class EditCategoryScreen extends PureComponent {
   });
   render() {
     // The screen's current route is passed in to `props.navigation.state`:
-    const { params } = this.props.navigation.state;
+    const { state, navigate } = this.props.navigation;
+    function editExercise(categoryName, exerciseName) {
+      navigate('EditExercise', {categoryName: categoryName, name: exerciseName})
+    }
     return (
       <View>
-        <AddExercise categoryName={params.name} />
-        <ExerciseList categoryName={params.name} />
+        <AddExercise categoryName={state.params.name} />
+        <ExerciseList categoryName={state.params.name} editExercise={editExercise} />
       </View>
     );
   }

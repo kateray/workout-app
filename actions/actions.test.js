@@ -12,4 +12,14 @@ describe('actions', () => {
     }
     expect(actions.addCategory({categoryName: name})).toEqual(expectedAction)
   })
+
+  it('should handle editExercise action', () => {
+    const categoryName = 'abs'
+    const expectedAction = {
+      type: ADD_CATEGORY,
+      payload: {
+        categoryName: name
+      }
+    }
+  })
 })

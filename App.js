@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { EditExerciseScreen } from './components/EditExerciseScreen'
 import { EditWorkoutScreen } from './components/EditWorkoutScreen'
 import { EditCategoryScreen } from './components/EditCategoryScreen'
 import { DailyWorkoutScreen } from './components/DailyWorkoutScreen'
@@ -10,6 +11,7 @@ const store = configureStore()
 
 const AppNavigator = StackNavigator({
   Home: { screen: DailyWorkoutScreen },
+  EditExercise: { screen: EditExerciseScreen },
   EditWorkout: { screen: EditWorkoutScreen },
   EditCategory: { screen: EditCategoryScreen }
 })

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import {StyleSheet, View, Text} from 'react-native'
+import {StyleSheet, View, Text, Button} from 'react-native'
 import {baseStyles} from '../BaseStyles'
 
 export class ExerciseItem extends PureComponent {
@@ -9,6 +9,7 @@ export class ExerciseItem extends PureComponent {
         <Text>
           {this.props.name}
         </Text>
+        <Button title='Edit' onPress={() => this.props.editExercise(this.props.categoryName, this.props.name)} />
       </View>
     )
   }

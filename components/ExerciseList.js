@@ -10,6 +10,8 @@ class ExerciseListInternal extends PureComponent {
 
   _renderItem = ({item}) => (
     <ExerciseItem
+      editExercise={this.props.editExercise}
+      categoryName={this.props.categoryName}
       {...item}
     />
   )
@@ -19,7 +21,7 @@ class ExerciseListInternal extends PureComponent {
       <FlatList style={styles.container}
         data={this.props.exercises}
         keyExtractor={this._keyExtractor}
-        renderItem={this._renderItem}
+        renderItem={this._renderItem.bind(this)}
       />
     )
   }
