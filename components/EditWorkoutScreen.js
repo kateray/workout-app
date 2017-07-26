@@ -5,7 +5,7 @@ import { CategoryList } from './CategoryList'
 
 export class EditWorkoutScreen extends PureComponent {
   static navigationOptions = {
-    title: 'Welcome'
+    title: 'Edit Workout'
   }
 
   render () {

@@ -1,20 +1,48 @@
 import React, { PureComponent } from 'react'
-import { View } from 'react-native'
+import { View, Button } from 'react-native'
 import { EditExerciseScreen } from './components/EditExerciseScreen'
 import { EditWorkoutScreen } from './components/EditWorkoutScreen'
 import { EditCategoryScreen } from './components/EditCategoryScreen'
 import { DailyWorkoutScreen } from './components/DailyWorkoutScreen'
 import { Provider } from 'react-redux'
 import { configureStore } from './configureStore'
-import { StackNavigator } from 'react-navigation'
+import { DrawerNavigator, StackNavigator } from 'react-navigation'
 
 const store = configureStore()
 
-const AppNavigator = StackNavigator({
-  Home: { screen: DailyWorkoutScreen },
-  EditWorkout: { screen: EditWorkoutScreen },
+const EditWorkoutNavigator = StackNavigator({
+  EditWorkout: {
+    screen: EditWorkoutScreen,
+    navigationOptions: ({navigation}) => ({
+      headerLeft: (
+        <Button title='##' onPress={()=> {
+          navigation.navigate('DrawerOpen')
+        }} />
+      )
+    })
+  },
   EditCategory: { screen: EditCategoryScreen },
   EditExercise: { screen: EditExerciseScreen }
+})
+
+const HomeNavigator = StackNavigator({
+  DailyWorkout: {
+    screen: DailyWorkoutScreen,
+    navigationOptions: ({navigation}) => ({
+      drawerLabel: 'Today\'s Workout',
+      title: 'Workout',
+      headerLeft: (
+        <Button title='##' onPress={()=> {
+          navigation.navigate('DrawerOpen')
+        }} />
+      )
+    })
+  }
+})
+
+const AppNavigator = DrawerNavigator({
+  Home: { screen: HomeNavigator },
+  EditWorkout: { screen: EditWorkoutNavigator }
 })
 
 export default class App extends PureComponent {

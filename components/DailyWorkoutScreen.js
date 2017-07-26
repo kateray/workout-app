@@ -1,18 +1,8 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { View, Text, FlatList, Button } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 
 class DailyWorkoutScreenInternal extends PureComponent {
-  static navigationOptions = ({ navigation }) => {
-    const {navigate} = navigation
-    return {
-      title: 'Welcome',
-      headerRight: (
-        <Button title='Edit' onPress={() => { navigate('EditWorkout') }} />
-       )
-    }
-  }
-
   _chooseExercises () {
     const exercises = []
     this.props.categories.forEach(c => {
