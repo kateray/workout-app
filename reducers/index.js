@@ -1,10 +1,8 @@
-import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE } from '../constants'
+import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE, DELETE_EXERCISE } from '../constants'
 import { combineReducers } from 'redux'
 
 const exercise = (state = {}, action) => {
   switch (action.type) {
-    case ADD_EXERCISE:
-      return action.payload
     case UPDATE_EXERCISE:
       if (state.id !== action.payload.id) {
         return state
@@ -38,6 +36,13 @@ const category = (state = {}, action) => {
           action.payload
         ]
       })
+    case DELETE_EXERCISE:
+      if (state.name !== action.categoryName) {
+        return state
+      }
+      return Object.assign({}, state, {
+        exercises: state.exercises.filter((i) => i.id !== action.exerciseId)
+      })
     default:
       return state
   }
@@ -50,6 +55,7 @@ const categories = (state = [], action) => {
         ...state,
         category(undefined, action)
       ]
+    case DELETE_EXERCISE:
     case ADD_EXERCISE:
     case UPDATE_EXERCISE:
       return state.map(m =>

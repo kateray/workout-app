@@ -1,5 +1,5 @@
 import { app } from './index'
-import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE } from '../constants'
+import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE, DELETE_EXERCISE } from '../constants'
 
 describe('root reducer', () => {
   it('should return the initial state', () => {
@@ -25,13 +25,23 @@ describe('root reducer', () => {
     expect(
       app({categories: [{name: 'abs', exercises: [{name: 'push-up'}]}]}, {
         type: ADD_EXERCISE,
-        payload: {
-          categoryName: 'abs',
-          exercise: {name: 'crunch'}
-        }
+        categoryName: 'abs',
+        payload: {name: 'crunch'}
       })
     ).toEqual({
       categories: [{name: 'abs', exercises: [{name: 'push-up'},{name: 'crunch'}]}]
+    })
+  })
+
+  it('should handle DELETE_EXERCISE', () => {
+    expect(
+      app({categories: [{name: 'abs', exercises: [{name: 'push-up', id: '1'}, {name: 'crunch', id: '2'}]}]}, {
+        type: DELETE_EXERCISE,
+        categoryName: 'abs',
+        exerciseId: '2'
+      })
+    ).toEqual({
+      categories: [{name: 'abs', exercises: [{name: 'push-up', id: '1'}]}]
     })
   })
 })

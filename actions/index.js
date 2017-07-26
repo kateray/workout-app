@@ -1,4 +1,4 @@
-import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE } from '../constants'
+import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE, DELETE_EXERCISE } from '../constants'
 import { AsyncStorage } from 'react-native'
 
 function guid() {
@@ -34,5 +34,13 @@ export function updateExercise(categoryName, payload) {
     categoryName,
     payload,
     type: UPDATE_EXERCISE
+  }
+}
+
+export function deleteExercise(categoryName, exerciseId) {
+  return {
+    categoryName,
+    exerciseId,
+    type: DELETE_EXERCISE
   }
 }

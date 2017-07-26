@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, View, TextInput, Text } from 'react-native'
-import { updateExercise } from '../actions'
+import { StyleSheet, View, TextInput, Text, Button } from 'react-native'
+import { updateExercise, deleteExercise } from '../actions'
 
 export class EditExerciseScreenInternal extends PureComponent {
   constructor(props) {
@@ -26,9 +26,9 @@ export class EditExerciseScreenInternal extends PureComponent {
           returnKeyType='done'
           onChangeText={(text) => this.setState({text})}
           enablesReturnKeyAutomatically={true}
-          placeholder='Add a Category'
           onSubmitEditing={() => { this.props.updateExercise(this.props.categoryName, {id: this.props.exercise.id, name: this.state.text})} }
           value={this.state.text} />
+        <Button title='Delete Exercise' onPress={() => this.props.deleteExercise(this.props.categoryName, this.props.exercise.id)} />
       </View>
     );
   }
@@ -55,7 +55,8 @@ function mapStateToProps (state, ownProps) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    updateExercise: (categoryName, data) => dispatch(updateExercise(categoryName, data))
+    updateExercise: (categoryName, data) => dispatch(updateExercise(categoryName, data)),
+    deleteExercise: (categoryName, exerciseId) => dispatch(deleteExercise(categoryName, exerciseId))
   }
 }
 
