@@ -13,7 +13,7 @@ export class EditWorkoutScreen extends PureComponent {
     return (
       <View>
         <AddCategory />
-        <CategoryList chooseCategory={(name) => { navigate('EditCategory', {name: name}) }} />
+        <CategoryList chooseCategory={(categoryId) => { navigate('EditCategory', {categoryId: categoryId}) }} />
       </View>
     )
   }

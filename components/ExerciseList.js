@@ -10,7 +10,7 @@ class ExerciseListInternal extends PureComponent {
   _renderItem = ({item}) => (
     <ExerciseItem
       editExercise={this.props.editExercise}
-      categoryName={this.props.categoryName}
+      categoryId={this.props.categoryId}
       {...item}
     />
   )
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps (state, ownProps) {
-  const category = state.categories.find(c => c.name === ownProps.categoryName)
+  const category = state.categories.find(c => c.id === ownProps.categoryId)
   return {
     exercises: category.exercises
   }

@@ -24,9 +24,9 @@ export class EditExerciseScreenInternal extends PureComponent {
           returnKeyType='done'
           onChangeText={(text) => this.setState({text})}
           enablesReturnKeyAutomatically={Boolean(true)}
-          onSubmitEditing={() => { this.props.updateExercise(this.props.categoryName, {id: this.props.exercise.id, name: this.state.text}) }}
+          onSubmitEditing={() => { this.props.updateExercise(this.props.categoryId, {id: this.props.exercise.id, name: this.state.text}) }}
           value={this.state.text} />
-        <Button title='Delete Exercise' onPress={() => this.props.deleteExercise(this.props.categoryName, this.props.exercise.id)} />
+        <Button title='Delete Exercise' onPress={() => this.props.deleteExercise(this.props.categoryId, this.props.exercise.id)} />
       </View>
     )
   }
@@ -43,18 +43,18 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state, ownProps) {
   const params = ownProps.navigation.state.params
-  const category = state.categories.find(c => c.name === params.categoryName)
+  const category = state.categories.find(c => c.id === params.categoryId)
   const exercise = category.exercises.find(e => e.name === params.name)
   return {
-    categoryName: params.categoryName,
+    categoryId: params.categoryId,
     exercise
   }
 }
 
 function mapDispatchToProps (dispatch) {
   return {
-    updateExercise: (categoryName, data) => dispatch(updateExercise(categoryName, data)),
-    deleteExercise: (categoryName, exerciseId) => dispatch(deleteExercise(categoryName, exerciseId))
+    updateExercise: (categoryId, data) => dispatch(updateExercise(categoryId, data)),
+    deleteExercise: (categoryId, exerciseId) => dispatch(deleteExercise(categoryId, exerciseId))
   }
 }
 

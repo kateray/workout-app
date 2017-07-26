@@ -7,7 +7,7 @@ export class CategoryItem extends PureComponent {
     return (
       <View style={styles.container}>
         <Button
-          onPress={() => this.props.chooseCategory(this.props.name)}
+          onPress={() => this.props.chooseCategory(this.props.id)}
           title={this.props.name} />
       </View>
     )

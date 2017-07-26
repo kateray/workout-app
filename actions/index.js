@@ -19,26 +19,26 @@ export function addCategory (category) {
   }
 }
 
-export function addExercise (categoryName, exercise) {
+export function addExercise (categoryId, exercise) {
   exercise = Object.assign({id: guid()}, exercise)
   return {
-    categoryName,
+    categoryId,
     exercise,
     type: ADD_EXERCISE
   }
 }
 
-export function updateExercise (categoryName, exercise) {
+export function updateExercise (categoryId, exercise) {
   return {
-    categoryName,
+    categoryId,
     exercise,
     type: UPDATE_EXERCISE
   }
 }
 
-export function deleteExercise (categoryName, exerciseId) {
+export function deleteExercise (categoryId, exerciseId) {
   return {
-    categoryName,
+    categoryId,
     exerciseId,
     type: DELETE_EXERCISE
   }

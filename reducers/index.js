@@ -18,7 +18,7 @@ const category = (state = {}, action) => {
     case ADD_CATEGORY:
       return Object.assign({}, {exercises: []}, action.category)
     case UPDATE_EXERCISE:
-      if (state.name !== action.categoryName) {
+      if (state.id !== action.categoryId) {
         return state
       }
       return Object.assign({}, state, {
@@ -27,7 +27,7 @@ const category = (state = {}, action) => {
         )
       })
     case ADD_EXERCISE:
-      if (state.name !== action.categoryName) {
+      if (state.id !== action.categoryId) {
         return state
       }
       return Object.assign({}, state, {
@@ -37,7 +37,7 @@ const category = (state = {}, action) => {
         ]
       })
     case DELETE_EXERCISE:
-      if (state.name !== action.categoryName) {
+      if (state.id !== action.categoryId) {
         return state
       }
       return Object.assign({}, state, {

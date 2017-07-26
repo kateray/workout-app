@@ -23,37 +23,37 @@ describe('root reducer', () => {
 
   it('should handle ADD_EXERCISE', () => {
     expect(
-      app({categories: [{name: 'abs', exercises: [{name: 'push-up'}]}]}, {
+      app({categories: [{name: 'abs', id: '1', exercises: [{name: 'push-up'}]}]}, {
         type: ADD_EXERCISE,
-        categoryName: 'abs',
+        categoryId: '1',
         exercise: {name: 'crunch'}
       })
     ).toEqual({
-      categories: [{name: 'abs', exercises: [{name: 'push-up'}, {name: 'crunch'}]}]
+      categories: [{name: 'abs', id: '1', exercises: [{name: 'push-up'}, {name: 'crunch'}]}]
     })
   })
 
   it('should handle UPDATE_EXERCISE', () => {
     expect(
-      app({categories: [{name: 'abs', exercises: [{name: 'push-up', id: '1'}]}]}, {
+      app({categories: [{name: 'abs', id: '1', exercises: [{name: 'push-up', id: '1'}]}]}, {
         type: UPDATE_EXERCISE,
-        categoryName: 'abs',
+        categoryId: '1',
         exercise: {id: '1', name: 'push-ups'}
       })
     ).toEqual({
-      categories: [{name: 'abs', exercises: [{name: 'push-ups', id: '1'}]}]
+      categories: [{name: 'abs', id: '1', exercises: [{name: 'push-ups', id: '1'}]}]
     })
   })
 
   it('should handle DELETE_EXERCISE', () => {
     expect(
-      app({categories: [{name: 'abs', exercises: [{name: 'push-up', id: '1'}, {name: 'crunch', id: '2'}]}]}, {
+      app({categories: [{name: 'abs', id: '1', exercises: [{name: 'push-up', id: '1'}, {name: 'crunch', id: '2'}]}]}, {
         type: DELETE_EXERCISE,
-        categoryName: 'abs',
+        categoryId: '1',
         exerciseId: '2'
       })
     ).toEqual({
-      categories: [{name: 'abs', exercises: [{name: 'push-up', id: '1'}]}]
+      categories: [{name: 'abs', id: '1', exercises: [{name: 'push-up', id: '1'}]}]
     })
   })
 })

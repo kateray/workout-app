@@ -9,7 +9,7 @@ export class ExerciseItem extends PureComponent {
         <Text>
           {this.props.name}
         </Text>
-        <Button title='Edit' onPress={() => this.props.editExercise(this.props.categoryName, this.props.name)} />
+        <Button title='Edit' onPress={() => this.props.editExercise(this.props.categoryId, this.props.name)} />
       </View>
     )
   }
