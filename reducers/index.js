@@ -4,10 +4,10 @@ import { combineReducers } from 'redux'
 const exercise = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_EXERCISE:
-      if (state.id !== action.payload.id) {
+      if (state.id !== action.exercise.id) {
         return state
       }
-      return Object.assign({}, state, action.payload)
+      return Object.assign({}, state, action.exercise)
     default:
       return state
   }
@@ -16,7 +16,7 @@ const exercise = (state = {}, action) => {
 const category = (state = {}, action) => {
   switch (action.type) {
     case ADD_CATEGORY:
-      return Object.assign({}, {exercises: []}, action.payload);
+      return Object.assign({}, {exercises: []}, action.category);
     case UPDATE_EXERCISE:
       if (state.name !== action.categoryName) {
         return state
@@ -33,7 +33,7 @@ const category = (state = {}, action) => {
       return Object.assign({}, state, {
         exercises: [
           ...state.exercises,
-          action.payload
+          action.exercise
         ]
       })
     case DELETE_EXERCISE:

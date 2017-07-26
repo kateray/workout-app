@@ -6,7 +6,7 @@ describe('actions', () => {
     const name = 'abs'
     const expectedAction = {
       type: ADD_CATEGORY,
-      payload: {
+      category: {
         name: name      }
     }
     expect(actions.addCategory({name: name})).toMatchObject(expectedAction)

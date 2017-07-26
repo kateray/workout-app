@@ -12,27 +12,27 @@ function s4() {
     .substring(1);
 }
 
-export function addCategory(payload) {
-  payload = Object.assign({id: guid()}, payload)
+export function addCategory(category) {
+  category = Object.assign({id: guid()}, category)
   return {
-    payload,
+    category,
     type: ADD_CATEGORY
   }
 }
 
-export function addExercise(categoryName, payload) {
-  payload = Object.assign({id: guid()}, payload)
+export function addExercise(categoryName, exercise) {
+  exercise = Object.assign({id: guid()}, exercise)
   return {
     categoryName,
-    payload,
+    exercise,
     type: ADD_EXERCISE
   }
 }
 
-export function updateExercise(categoryName, payload) {
+export function updateExercise(categoryName, exercise) {
   return {
     categoryName,
-    payload,
+    exercise,
     type: UPDATE_EXERCISE
   }
 }

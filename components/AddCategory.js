@@ -54,7 +54,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    addCategory: (payload) => dispatch(addCategory(payload))
+    addCategory: (category) => dispatch(addCategory(category))
   }
 }
 

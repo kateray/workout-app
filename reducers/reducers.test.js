@@ -12,7 +12,7 @@ describe('root reducer', () => {
     expect(
       app({}, {
         type: ADD_CATEGORY,
-        payload: {
+        category: {
           name: 'abs'
         }
       })
@@ -26,7 +26,7 @@ describe('root reducer', () => {
       app({categories: [{name: 'abs', exercises: [{name: 'push-up'}]}]}, {
         type: ADD_EXERCISE,
         categoryName: 'abs',
-        payload: {name: 'crunch'}
+        exercise: {name: 'crunch'}
       })
     ).toEqual({
       categories: [{name: 'abs', exercises: [{name: 'push-up'},{name: 'crunch'}]}]
