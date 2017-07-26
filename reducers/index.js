@@ -4,7 +4,7 @@ import { combineReducers } from 'redux'
 const exercise = (state = {}, action) => {
   switch (action.type) {
     case ADD_EXERCISE:
-      return Object.assign({}, action.payload);
+      return action.payload
     case UPDATE_EXERCISE:
       if (state.id !== action.payload.id) {
         return state

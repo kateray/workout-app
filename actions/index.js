@@ -13,6 +13,7 @@ function s4() {
 }
 
 export function addCategory(payload) {
+  payload = Object.assign({id: guid()}, payload)
   return {
     payload,
     type: ADD_CATEGORY
