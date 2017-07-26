@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { View } from 'react-native'
 import { EditExerciseScreen } from './components/EditExerciseScreen'
 import { EditWorkoutScreen } from './components/EditWorkoutScreen'
 import { EditCategoryScreen } from './components/EditCategoryScreen'
@@ -11,9 +12,9 @@ const store = configureStore()
 
 const AppNavigator = StackNavigator({
   Home: { screen: DailyWorkoutScreen },
-  EditExercise: { screen: EditExerciseScreen },
   EditWorkout: { screen: EditWorkoutScreen },
-  EditCategory: { screen: EditCategoryScreen }
+  EditCategory: { screen: EditCategoryScreen },
+  EditExercise: { screen: EditExerciseScreen }
 })
 
 export default class App extends PureComponent {
