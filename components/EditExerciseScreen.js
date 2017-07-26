@@ -24,7 +24,7 @@ export class EditExerciseScreenInternal extends PureComponent {
   })
 
   saveChanges() {
-    this.props.updateExercise(this.props.categoryId, {id: this.props.exercise.id, name: this.state.text, amount: this.state.amount})
+    this.props.updateExercise(this.props.categoryId, {id: this.props.exercise.id, name: this.state.text, amount: this.state.amount, amountType: this.state.amountType})
   }
 
   componentDidMount(){
@@ -51,6 +51,13 @@ export class EditExerciseScreenInternal extends PureComponent {
           selectedValue={this.state.amount}
           onValueChange={(i) => this.setState({amount: i})}>
           {amountOptions}
+        </Picker>
+        <Picker
+          selectedValue={this.state.amountType}
+          onValueChange={(i) => this.setState({amountType: i})}>
+          <Picker.Item label='reps' value='reps' key='reps' />
+          <Picker.Item label='seconds' value='seconds' key='seconds' />
+          <Picker.Item label='minutes' value='minutes' key='minutes' />
         </Picker>
         <Button title='Delete Exercise' onPress={() => this.props.deleteExercise(this.props.categoryId, this.props.exercise.id)} />
       </View>
