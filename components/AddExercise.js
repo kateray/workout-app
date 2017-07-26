@@ -1,31 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addExercise } from '../actions'
-import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native'
+import {StyleSheet, TextInput, View} from 'react-native'
 import {baseStyles} from '../BaseStyles'
 
 class AddExerciseInternal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { text: '' };
+  constructor (props) {
+    super(props)
+    this.state = { text: '' }
   }
 
-  submitExercise(){
+  submitExercise () {
     this.props.addExercise(this.props.categoryName, {name: this.state.text})
     this.setState({text: ''})
   }
 
-  render(){
+  render () {
     return (
       <View style={styles.container}>
         <TextInput
           autoCapitalize='words'
           style={styles.input}
           returnKeyType='done'
-          enablesReturnKeyAutomatically={true}
+          enablesReturnKeyAutomatically={Boolean(true)}
           placeholder='Add an Exercise'
           onChangeText={(text) => this.setState({text})}
-          onSubmitEditing={() => { this.submitExercise()} } value={this.state.text} />
+          onSubmitEditing={() => { this.submitExercise() }} value={this.state.text} />
       </View>
     )
   }

@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import {StyleSheet, Text, FlatList} from 'react-native'
+import {StyleSheet, FlatList} from 'react-native'
 import {baseStyles} from '../BaseStyles'
 import {CategoryItem} from './CategoryItem'
 
 class CategoryListInternal extends PureComponent {
-
   _keyExtractor = (item, index) => item.name
 
   _renderItem = ({item}) => (
@@ -15,7 +14,7 @@ class CategoryListInternal extends PureComponent {
     />
   )
 
-  render(){
+  render () {
     return (
       <FlatList style={styles.container}
         data={this.props.categories}

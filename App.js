@@ -17,7 +17,7 @@ const AppNavigator = StackNavigator({
 })
 
 export default class App extends PureComponent {
-  render() {
+  render () {
     return (
       <Provider store={store}>
         <AppNavigator />

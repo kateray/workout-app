@@ -3,7 +3,7 @@ import {StyleSheet, View, Button} from 'react-native'
 import {baseStyles} from '../BaseStyles'
 
 export class CategoryItem extends PureComponent {
-  render(){
+  render () {
     return (
       <View style={styles.container}>
         <Button

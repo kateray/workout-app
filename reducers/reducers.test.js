@@ -29,7 +29,19 @@ describe('root reducer', () => {
         exercise: {name: 'crunch'}
       })
     ).toEqual({
-      categories: [{name: 'abs', exercises: [{name: 'push-up'},{name: 'crunch'}]}]
+      categories: [{name: 'abs', exercises: [{name: 'push-up'}, {name: 'crunch'}]}]
+    })
+  })
+
+  it('should handle UPDATE_EXERCISE', () => {
+    expect(
+      app({categories: [{name: 'abs', exercises: [{name: 'push-up', id: '1'}]}]}, {
+        type: UPDATE_EXERCISE,
+        categoryName: 'abs',
+        exercise: {id: '1', name: 'push-ups'}
+      })
+    ).toEqual({
+      categories: [{name: 'abs', exercises: [{name: 'push-ups', id: '1'}]}]
     })
   })
 

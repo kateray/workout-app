@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import {StyleSheet, Text, FlatList} from 'react-native'
+import {StyleSheet, FlatList} from 'react-native'
 import {baseStyles} from '../BaseStyles'
 import {ExerciseItem} from './ExerciseItem'
 
 class ExerciseListInternal extends PureComponent {
-
   _keyExtractor = (item, index) => item.name
 
   _renderItem = ({item}) => (
@@ -16,7 +15,7 @@ class ExerciseListInternal extends PureComponent {
     />
   )
 
-  render(){
+  render () {
     return (
       <FlatList style={styles.container}
         data={this.props.exercises}

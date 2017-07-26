@@ -16,7 +16,7 @@ const exercise = (state = {}, action) => {
 const category = (state = {}, action) => {
   switch (action.type) {
     case ADD_CATEGORY:
-      return Object.assign({}, {exercises: []}, action.category);
+      return Object.assign({}, {exercises: []}, action.category)
     case UPDATE_EXERCISE:
       if (state.name !== action.categoryName) {
         return state

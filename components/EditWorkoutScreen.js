@@ -8,13 +8,13 @@ export class EditWorkoutScreen extends PureComponent {
     title: 'Welcome'
   }
 
-  render() {
+  render () {
     const {navigate} = this.props.navigation
     return (
       <View>
         <AddCategory />
-        <CategoryList chooseCategory={(name) => {navigate('EditCategory', {name: name})}} />
+        <CategoryList chooseCategory={(name) => { navigate('EditCategory', {name: name}) }} />
       </View>
-    );
+    )
   }
 }

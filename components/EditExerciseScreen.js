@@ -4,19 +4,17 @@ import { StyleSheet, View, TextInput, Text, Button } from 'react-native'
 import { updateExercise, deleteExercise } from '../actions'
 
 export class EditExerciseScreenInternal extends PureComponent {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       text: this.props.exercise.name
-    };
+    }
   }
 
   static navigationOptions = ({ navigation }) => ({
     title: 'Edit Exercise'
-  });
-  render() {
-    // The screen's current route is passed in to `props.navigation.state`:
-    const { params } = this.props.navigation.state;
+  })
+  render () {
     return (
       <View>
         <Text>Name:</Text>
@@ -25,12 +23,12 @@ export class EditExerciseScreenInternal extends PureComponent {
           autoCapitalize='words'
           returnKeyType='done'
           onChangeText={(text) => this.setState({text})}
-          enablesReturnKeyAutomatically={true}
-          onSubmitEditing={() => { this.props.updateExercise(this.props.categoryName, {id: this.props.exercise.id, name: this.state.text})} }
+          enablesReturnKeyAutomatically={Boolean(true)}
+          onSubmitEditing={() => { this.props.updateExercise(this.props.categoryName, {id: this.props.exercise.id, name: this.state.text}) }}
           value={this.state.text} />
         <Button title='Delete Exercise' onPress={() => this.props.deleteExercise(this.props.categoryName, this.props.exercise.id)} />
       </View>
-    );
+    )
   }
 }
 

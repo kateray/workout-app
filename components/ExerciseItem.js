@@ -3,7 +3,7 @@ import {StyleSheet, View, Text, Button} from 'react-native'
 import {baseStyles} from '../BaseStyles'
 
 export class ExerciseItem extends PureComponent {
-  render(){
+  render () {
     return (
       <View style={styles.container}>
         <Text>

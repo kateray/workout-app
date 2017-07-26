@@ -1,18 +1,17 @@
 import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE, DELETE_EXERCISE } from '../constants'
-import { AsyncStorage } from 'react-native'
 
-function guid() {
+function guid () {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-    s4() + '-' + s4() + s4() + s4();
+    s4() + '-' + s4() + s4() + s4()
 }
 
-function s4() {
+function s4 () {
   return Math.floor((1 + Math.random()) * 0x10000)
     .toString(16)
-    .substring(1);
+    .substring(1)
 }
 
-export function addCategory(category) {
+export function addCategory (category) {
   category = Object.assign({id: guid()}, category)
   return {
     category,
@@ -20,7 +19,7 @@ export function addCategory(category) {
   }
 }
 
-export function addExercise(categoryName, exercise) {
+export function addExercise (categoryName, exercise) {
   exercise = Object.assign({id: guid()}, exercise)
   return {
     categoryName,
@@ -29,7 +28,7 @@ export function addExercise(categoryName, exercise) {
   }
 }
 
-export function updateExercise(categoryName, exercise) {
+export function updateExercise (categoryName, exercise) {
   return {
     categoryName,
     exercise,
@@ -37,7 +36,7 @@ export function updateExercise(categoryName, exercise) {
   }
 }
 
-export function deleteExercise(categoryName, exerciseId) {
+export function deleteExercise (categoryName, exerciseId) {
   return {
     categoryName,
     exerciseId,

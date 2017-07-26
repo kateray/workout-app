@@ -8,14 +8,14 @@ class DailyWorkoutScreenInternal extends PureComponent {
     return {
       title: 'Welcome',
       headerRight: (
-        <Button title='Edit' onPress={() => {navigate('EditWorkout')} } />
+        <Button title='Edit' onPress={() => { navigate('EditWorkout') }} />
        )
     }
   }
 
-  _chooseExercises(){
+  _chooseExercises () {
     const exercises = []
-    this.props.categories.forEach( c => {
+    this.props.categories.forEach(c => {
       if (c.exercises.length > 0) {
         const randExerciseIndex = Math.floor(Math.random() * c.exercises.length)
         exercises.push(c.exercises[randExerciseIndex])
@@ -26,7 +26,7 @@ class DailyWorkoutScreenInternal extends PureComponent {
 
   _keyExtractor = (item, index) => item.name
 
-  render() {
+  render () {
     const exercises = this._chooseExercises()
     return (
       <View>
@@ -37,7 +37,7 @@ class DailyWorkoutScreenInternal extends PureComponent {
           renderItem={({item}) => <Text>{item.name}</Text>}
         />
       </View>
-    );
+    )
   }
 }
 
