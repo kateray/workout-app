@@ -1,13 +1,15 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, View, TextInput, Text, Button } from 'react-native'
+import { StyleSheet, View, TextInput, Text, Button, Picker } from 'react-native'
 import { updateExercise, deleteExercise } from '../actions'
 
 export class EditExerciseScreenInternal extends PureComponent {
   constructor (props) {
     super(props)
     this.state = {
-      text: this.props.exercise.name
+      text: this.props.exercise.name,
+      amount: this.props.exercise.amount,
+      amountType: this.props.exercise.amountType
     }
   }
 
@@ -22,7 +24,7 @@ export class EditExerciseScreenInternal extends PureComponent {
   })
 
   saveChanges() {
-    this.props.updateExercise(this.props.categoryId, {id: this.props.exercise.id, name: this.state.text})
+    this.props.updateExercise(this.props.categoryId, {id: this.props.exercise.id, name: this.state.text, amount: this.state.amount})
   }
 
   componentDidMount(){
@@ -30,6 +32,10 @@ export class EditExerciseScreenInternal extends PureComponent {
   }
 
   render () {
+    const amountOptions = [...Array(60).keys()].map( num => {
+      num = (num+1).toString()
+      return <Picker.Item label={num} value={num} key={num} />
+    })
     return (
       <View>
         <Text>Name:</Text>
@@ -39,8 +45,13 @@ export class EditExerciseScreenInternal extends PureComponent {
           returnKeyType='done'
           onChangeText={(text) => this.setState({text})}
           enablesReturnKeyAutomatically={Boolean(true)}
-          onSubmitEditing={() => { this.props.updateExercise(this.props.categoryId, {id: this.props.exercise.id, name: this.state.text}) }}
           value={this.state.text} />
+        <Text>Reps:</Text>
+        <Picker
+          selectedValue={this.state.amount}
+          onValueChange={(i) => this.setState({amount: i})}>
+          {amountOptions}
+        </Picker>
         <Button title='Delete Exercise' onPress={() => this.props.deleteExercise(this.props.categoryId, this.props.exercise.id)} />
       </View>
     )

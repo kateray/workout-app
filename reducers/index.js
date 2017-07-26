@@ -3,6 +3,8 @@ import { combineReducers } from 'redux'
 
 const exercise = (state = {}, action) => {
   switch (action.type) {
+    case ADD_EXERCISE:
+      return Object.assign({}, {amount: '1', amountType: 'reps'}, action.exercise)
     case UPDATE_EXERCISE:
       if (state.id !== action.exercise.id) {
         return state
@@ -33,7 +35,7 @@ const category = (state = {}, action) => {
       return Object.assign({}, state, {
         exercises: [
           ...state.exercises,
-          action.exercise
+          exercise(undefined, action)
         ]
       })
     case DELETE_EXERCISE:

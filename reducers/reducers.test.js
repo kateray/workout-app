@@ -29,7 +29,7 @@ describe('root reducer', () => {
         exercise: {name: 'crunch'}
       })
     ).toEqual({
-      categories: [{name: 'abs', id: '1', exercises: [{name: 'push-up'}, {name: 'crunch'}]}]
+      categories: [{name: 'abs', id: '1', exercises: [{name: 'push-up'}, {name: 'crunch', amount: '1', amountType: 'reps'}]}]
     })
   })
 

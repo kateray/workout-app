@@ -24,7 +24,7 @@ class DailyWorkoutScreenInternal extends PureComponent {
         <FlatList
           data={exercises}
           keyExtractor={this._keyExtractor}
-          renderItem={({item}) => <Text>{item.name}</Text>}
+          renderItem={({item}) => <Text>{item.amount} {item.name}</Text>}
         />
       </View>
     )
