@@ -23,7 +23,7 @@ class AddCategoryInternal extends React.Component {
           style={styles.input}
           returnKeyType='done'
           enablesReturnKeyAutomatically={Boolean(true)}
-          placeholder='Add a Category'
+          placeholder='+ Add a Category'
           onChangeText={(text) => this.setState({text})}
           onSubmitEditing={() => { this.submitCategory() }}
           value={this.state.text} />

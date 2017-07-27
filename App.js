@@ -6,17 +6,18 @@ import { EditCategoryScreen } from './components/EditCategoryScreen'
 import { DailyWorkoutScreen } from './components/DailyWorkoutScreen'
 import { Provider } from 'react-redux'
 import { configureStore } from './configureStore'
-import { DrawerNavigator, StackNavigator } from 'react-navigation'
+import { TabNavigator, StackNavigator } from 'react-navigation'
 
 const store = configureStore()
 
 const EditWorkoutNavigator = StackNavigator({
   EditWorkout: {
     screen: EditWorkoutScreen,
+    tabBarLabel: 'Edit',
     navigationOptions: ({navigation}) => ({
-      headerLeft: (
-        <Button title='##' onPress={()=> {
-          navigation.navigate('DrawerOpen')
+      headerRight: (
+        <Button title='Edit' onPress={()=> {
+          navigation.goBack()
         }} />
       )
     })
@@ -29,18 +30,13 @@ const HomeNavigator = StackNavigator({
   DailyWorkout: {
     screen: DailyWorkoutScreen,
     navigationOptions: ({navigation}) => ({
-      drawerLabel: 'Today\'s Workout',
-      title: 'Workout',
-      headerLeft: (
-        <Button title='##' onPress={()=> {
-          navigation.navigate('DrawerOpen')
-        }} />
-      )
+      tabBarLabel: 'Today\'s Workout',
+      title: 'Workout'
     })
   }
 })
 
-const AppNavigator = DrawerNavigator({
+const AppNavigator = TabNavigator({
   Home: { screen: HomeNavigator },
   EditWorkout: { screen: EditWorkoutNavigator }
 })

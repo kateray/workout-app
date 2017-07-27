@@ -4,10 +4,6 @@ import { AddCategory } from './AddCategory'
 import { CategoryList } from './CategoryList'
 
 export class EditWorkoutScreen extends PureComponent {
-  static navigationOptions = {
-    title: 'Edit Workout'
-  }
-
   render () {
     const {navigate} = this.props.navigation
     return (
@@ -15,6 +11,6 @@ export class EditWorkoutScreen extends PureComponent {
         <AddCategory />
         <CategoryList chooseCategory={(categoryId) => { navigate('EditCategory', {categoryId: categoryId}) }} />
       </View>
-    )
+  )
   }
 }

@@ -15,6 +15,11 @@ export class EditExerciseScreenInternal extends PureComponent {
 
   static navigationOptions = ({ navigation }) => ({
     title: 'Edit Exercise',
+    headerLeft: (
+      <Button title='Cancel' onPress={()=> {
+        navigation.goBack()
+      }} />
+    ),
     headerRight: (
       <Button title='Save' onPress={()=> {
         navigation.state.params.saveChanges()
@@ -47,11 +52,12 @@ export class EditExerciseScreenInternal extends PureComponent {
           enablesReturnKeyAutomatically={Boolean(true)}
           value={this.state.text} />
         <Text>Reps:</Text>
-        <Picker
-          selectedValue={this.state.amount}
-          onValueChange={(i) => this.setState({amount: i})}>
-          {amountOptions}
-        </Picker>
+        <TextInput
+          style={styles.input}
+          value={this.state.amount}
+          enablesReturnKeyAutomatically={Boolean(true)}
+          keyboardType='numeric'
+          onChangeText={(i) => this.setState({amount: i})} />
         <Picker
           selectedValue={this.state.amountType}
           onValueChange={(i) => this.setState({amountType: i})}>
