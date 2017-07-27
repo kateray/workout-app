@@ -10,7 +10,7 @@ class AddCategoryInternal extends React.Component {
     this.state = { text: '' }
   }
 
-  submitCategory () {
+  _submitCategory = () => {
     this.props.addCategory({name: this.state.text})
     this.setState({text: ''})
   }
@@ -25,7 +25,7 @@ class AddCategoryInternal extends React.Component {
           enablesReturnKeyAutomatically={Boolean(true)}
           placeholder='+ Add a Category'
           onChangeText={(text) => this.setState({text})}
-          onSubmitEditing={() => { this.submitCategory() }}
+          onSubmitEditing={this._submitCategory}
           value={this.state.text} />
       </View>
     )

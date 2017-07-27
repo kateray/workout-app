@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { View, Text, FlatList } from 'react-native'
 
 class DailyWorkoutScreenInternal extends PureComponent {
-  _chooseExercises () {
+  _chooseExercises = () => {
     const exercises = []
     this.props.categories.forEach(c => {
       if (c.exercises.length > 0) {

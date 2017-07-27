@@ -10,7 +10,7 @@ class AddExerciseInternal extends React.Component {
     this.state = { text: '' }
   }
 
-  submitExercise () {
+  _submitExercise = () => {
     this.props.addExercise(this.props.categoryId, {name: this.state.text})
     this.setState({text: ''})
   }
@@ -25,7 +25,7 @@ class AddExerciseInternal extends React.Component {
           enablesReturnKeyAutomatically={Boolean(true)}
           placeholder='Add an Exercise'
           onChangeText={(text) => this.setState({text})}
-          onSubmitEditing={() => { this.submitExercise() }} value={this.state.text} />
+          onSubmitEditing={this._submitExercise} value={this.state.text} />
       </View>
     )
   }

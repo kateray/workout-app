@@ -13,12 +13,12 @@ export class EditExerciseScreenInternal extends PureComponent {
     }
   }
 
-  saveChanges() {
+  _saveChanges = () => {
     this.props.updateExercise(this.props.categoryId, {id: this.props.exercise.id, name: this.state.text, amount: this.state.amount, amountType: this.state.amountType})
   }
 
   componentDidMount(){
-    this.props.navigation.setParams({ saveChanges: this.saveChanges.bind(this) })
+    this.props.navigation.setParams({ saveChanges: this._saveChanges })
   }
 
   render () {
