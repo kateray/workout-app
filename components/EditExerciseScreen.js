@@ -1,24 +1,33 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { StyleSheet, View, TextInput, Text, Button, Picker } from 'react-native'
-import { updateExercise, deleteExercise } from '../actions'
+import { addExercise, updateExercise, deleteExercise } from '../actions'
 
 export class EditExerciseScreenInternal extends PureComponent {
   constructor (props) {
     super(props)
     this.state = {
-      text: this.props.exercise.name,
-      amount: this.props.exercise.amount,
-      amountType: this.props.exercise.amountType
+      text: this.props.exercise.name || '',
+      amount: this.props.exercise.amount || '1',
+      amountType: this.props.exercise.amountType || 'reps'
     }
   }
 
   _saveChanges = () => {
-    this.props.updateExercise(this.props.categoryId, {id: this.props.exercise.id, name: this.state.text, amount: this.state.amount, amountType: this.state.amountType})
+    if (this.props.exercise) {
+      this.props.updateExercise(this.props.categoryId, {id: this.props.exercise.id, name: this.state.text, amount: this.state.amount, amountType: this.state.amountType})
+    } else {
+      this.props.addExercise(this.props.categoryId, {name: this.state.text, amount: this.state.amount, amountType: this.state.amountType})
+    }
   }
 
   componentDidMount(){
     this.props.navigation.setParams({ saveChanges: this._saveChanges })
+  }
+
+  _delete = () => {
+    this.props.deleteExercise(this.props.categoryId, this.props.exercise.id)
+    this.props.navigation.goBack()
   }
 
   render () {
@@ -50,7 +59,9 @@ export class EditExerciseScreenInternal extends PureComponent {
           <Picker.Item label='seconds' value='seconds' key='seconds' />
           <Picker.Item label='minutes' value='minutes' key='minutes' />
         </Picker>
-        <Button title='Delete Exercise' onPress={() => this.props.deleteExercise(this.props.categoryId, this.props.exercise.id)} />
+        {this.props.exercise &&
+          <Button title='Delete Exercise' onPress={this._delete} />
+        }
       </View>
     )
   }
@@ -68,7 +79,7 @@ const styles = StyleSheet.create({
 function mapStateToProps (state, ownProps) {
   const params = ownProps.navigation.state.params
   const category = state.categories.find(c => c.id === params.categoryId)
-  const exercise = category.exercises.find(e => e.name === params.name)
+  const exercise = params.name ? category.exercises.find(e => e.name === params.name) : params.name
   return {
     categoryId: params.categoryId,
     exercise
@@ -77,7 +88,8 @@ function mapStateToProps (state, ownProps) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    updateExercise: (categoryId, data) => dispatch(updateExercise(categoryId, data)),
+    addExercise: (categoryId, exercise) => dispatch(addExercise(categoryId, exercise)),
+    updateExercise: (categoryId, exercise) => dispatch(updateExercise(categoryId, exercise)),
     deleteExercise: (categoryId, exerciseId) => dispatch(deleteExercise(categoryId, exerciseId))
   }
 }
