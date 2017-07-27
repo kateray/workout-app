@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     padding: 8,
     borderColor: 'black',
     borderWidth: 1,
-    height: 25,
+    height: 50,
     flex: 1
   }
 })

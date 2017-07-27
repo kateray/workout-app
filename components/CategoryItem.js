@@ -3,7 +3,7 @@ import {StyleSheet, View, TouchableHighlight, Text, TouchableOpacity} from 'reac
 import {baseStyles} from '../BaseStyles'
 
 export const CategoryItem = ({ editing, name, id, deleteCategory, chooseCategory }) => (
-  <View>
+  <View style={styles.container}>
     {editing &&
       <TouchableOpacity style={styles.deleteButton} onPress={()=> deleteCategory(id)}>
         <Text style={styles.deleteButtonText}>XX</Text>
@@ -17,8 +17,11 @@ export const CategoryItem = ({ editing, name, id, deleteCategory, chooseCategory
 
 const styles = StyleSheet.create({
   ...baseStyles,
+  container: {
+    flexDirection: 'row'
+  },
   deleteButton: {
-    width: 50
+    width: 40
   },
   deleteButtonText: {
     fontSize: 20,

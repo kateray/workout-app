@@ -1,16 +1,7 @@
 export const baseStyles = {
-  button: {
-    backgroundColor: 'blue',
-    color: 'white',
-    height: 30,
-    lineHeight: 30,
-    marginTop: 10,
-    textAlign: 'center',
-    width: 250
-  },
   fullWidthButton: {
     padding: 8,
-    flexDirection: 'row',
+    flex: 1,
     borderColor: 'black',
     borderBottomWidth: 1
   },

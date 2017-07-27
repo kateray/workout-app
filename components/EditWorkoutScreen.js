@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, FlatList, View } from 'react-native'
+import { StyleSheet, FlatList, View, KeyboardAvoidingView } from 'react-native'
 import {baseStyles} from '../BaseStyles'
 import { AddCategory } from './AddCategory'
 import {CategoryItem} from './CategoryItem'
@@ -37,15 +37,15 @@ export class EditWorkoutScreenInternal extends PureComponent {
 
   render () {
     return (
-      <View style={{flex: 1}}>
-        <AddCategory />
+      <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={64}>
         <FlatList style={styles.container}
           data={this.props.categories}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}
           extraData={this.state}
         />
-      </View>
+        <AddCategory />
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -53,7 +53,6 @@ export class EditWorkoutScreenInternal extends PureComponent {
 const styles = StyleSheet.create({
   ...baseStyles,
   container: {
-    flex: 1
   }
 })
 

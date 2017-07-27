@@ -9,8 +9,8 @@ export const EditCategoryScreen = ({navigation}) => {
   )
   return (
     <View>
-      <Button title='Add Exercise' onPress={() => openExerciseForm(state.params.categoryId, false)} />
       <ExerciseList categoryId={state.params.categoryId} editExercise={openExerciseForm} />
+      <Button title='Add Exercise' onPress={() => openExerciseForm(state.params.categoryId, false)} />
     </View>
   )
 }

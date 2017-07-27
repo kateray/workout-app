@@ -65,6 +65,7 @@ const AppNavigator = TabNavigator({
 
 export default class App extends PureComponent {
   render () {
+    console.error('wtf')
     return (
       <Provider store={store}>
         <AppNavigator />
