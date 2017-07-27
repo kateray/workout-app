@@ -15,15 +15,37 @@ const EditWorkoutNavigator = StackNavigator({
     screen: EditWorkoutScreen,
     tabBarLabel: 'Edit',
     navigationOptions: ({navigation}) => ({
+      title: 'Categories',
       headerRight: (
         <Button title='Edit' onPress={()=> {
-          navigation.goBack()
+          navigation.state.params.toggleEdit()
         }} />
       )
     })
   },
-  EditCategory: { screen: EditCategoryScreen },
-  EditExercise: { screen: EditExerciseScreen }
+  EditCategory: {
+    screen: EditCategoryScreen,
+    navigationOptions: ({navigation}) => ({
+      title: 'Edit Category'
+    })
+  },
+  EditExercise: {
+    screen: EditExerciseScreen,
+    navigationOptions: ({navigation}) => ({
+      title: 'Edit Exercise',
+      headerLeft: (
+        <Button title='Cancel' onPress={()=> {
+          navigation.goBack()
+        }} />
+      ),
+      headerRight: (
+        <Button title='Save' onPress={()=> {
+          navigation.state.params.saveChanges()
+          navigation.goBack()
+        }} />
+      )
+    })
+  }
 })
 
 const HomeNavigator = StackNavigator({

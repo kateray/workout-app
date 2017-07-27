@@ -1,14 +1,19 @@
 import React, { PureComponent } from 'react'
-import {StyleSheet, View, Button} from 'react-native'
+import {StyleSheet, View, TouchableHighlight, Text, TouchableOpacity} from 'react-native'
 import {baseStyles} from '../BaseStyles'
 
 export class CategoryItem extends PureComponent {
   render () {
     return (
-      <View style={styles.container}>
-        <Button
-          onPress={() => this.props.chooseCategory(this.props.id)}
-          title={this.props.name} />
+      <View>
+        {this.props.editing &&
+          <TouchableOpacity style={styles.deleteButton} onPress={()=> this.props.deleteCategory(this.props.id)}>
+            <Text style={styles.deleteButtonText}>XX</Text>
+          </TouchableOpacity>
+        }
+        <TouchableHighlight style={styles.fullWidthButton} onPress={() => this.props.chooseCategory(this.props.id)}>
+          <Text style={styles.fullWidthButtonText}>{this.props.name}</Text>
+        </TouchableHighlight>
       </View>
     )
   }
@@ -16,21 +21,11 @@ export class CategoryItem extends PureComponent {
 
 const styles = StyleSheet.create({
   ...baseStyles,
-  container: {
-    padding: 8,
-    flex: 1,
-    flexDirection: 'row',
-    borderColor: 'black',
-    borderWidth: 1
+  deleteButton: {
+    width: 50
   },
-  button: {
-    ...baseStyles.button,
-    backgroundColor: 'green'
-  },
-  input: {
-    borderColor: 'black',
-    borderWidth: 1,
-    height: 37,
-    width: 250
+  deleteButtonText: {
+    fontSize: 20,
+    color: 'red'
   }
 })

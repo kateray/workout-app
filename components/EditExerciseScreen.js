@@ -13,21 +13,6 @@ export class EditExerciseScreenInternal extends PureComponent {
     }
   }
 
-  static navigationOptions = ({ navigation }) => ({
-    title: 'Edit Exercise',
-    headerLeft: (
-      <Button title='Cancel' onPress={()=> {
-        navigation.goBack()
-      }} />
-    ),
-    headerRight: (
-      <Button title='Save' onPress={()=> {
-        navigation.state.params.saveChanges()
-        navigation.goBack()
-      }} />
-    )
-  })
-
   saveChanges() {
     this.props.updateExercise(this.props.categoryId, {id: this.props.exercise.id, name: this.state.text, amount: this.state.amount, amountType: this.state.amountType})
   }

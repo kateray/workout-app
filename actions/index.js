@@ -1,4 +1,4 @@
-import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE, DELETE_EXERCISE } from '../constants'
+import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE, DELETE_EXERCISE, DELETE_CATEGORY } from '../constants'
 
 function guid () {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
@@ -41,5 +41,12 @@ export function deleteExercise (categoryId, exerciseId) {
     categoryId,
     exerciseId,
     type: DELETE_EXERCISE
+  }
+}
+
+export function deleteCategory (categoryId) {
+  return {
+    categoryId,
+    type: DELETE_CATEGORY
   }
 }

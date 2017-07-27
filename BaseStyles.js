@@ -7,5 +7,14 @@ export const baseStyles = {
     marginTop: 10,
     textAlign: 'center',
     width: 250
+  },
+  fullWidthButton: {
+    padding: 8,
+    flexDirection: 'row',
+    borderColor: 'black',
+    borderBottomWidth: 1
+  },
+  fullWidthButtonText: {
+    fontSize:18
   }
 }

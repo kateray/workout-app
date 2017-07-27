@@ -1,5 +1,5 @@
 import { app } from './index'
-import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE, DELETE_EXERCISE } from '../constants'
+import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE, DELETE_EXERCISE, DELETE_CATEGORY } from '../constants'
 
 describe('root reducer', () => {
   it('should return the initial state', () => {
@@ -30,6 +30,17 @@ describe('root reducer', () => {
       })
     ).toEqual({
       categories: [{name: 'abs', id: '1', exercises: [{name: 'push-up'}, {name: 'crunch', amount: '1', amountType: 'reps'}]}]
+    })
+  })
+
+  it('should handle DELETE_CATEGORY', () => {
+    expect(
+      app({categories: [{name: 'abs', id: '1', exercises: [{name: 'push-up'}]},{name: 'arms', id: '2', exercises: [{name: 'push-up'}]}]}, {
+        type: DELETE_CATEGORY,
+        categoryId: '1'
+      })
+    ).toEqual({
+      categories: [{name: 'arms', id: '2', exercises: [{name: 'push-up'}]}]
     })
   })
 

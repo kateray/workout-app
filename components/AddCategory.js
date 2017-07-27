@@ -35,16 +35,14 @@ class AddCategoryInternal extends React.Component {
 const styles = StyleSheet.create({
   ...baseStyles,
   container: {
-  },
-  button: {
-    ...baseStyles.button,
-    backgroundColor: 'green'
+    height: 50
   },
   input: {
+    padding: 8,
     borderColor: 'black',
     borderWidth: 1,
-    height: 37,
-    width: 250
+    height: 25,
+    flex: 1
   }
 })
 

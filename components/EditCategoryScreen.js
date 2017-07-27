@@ -4,9 +4,6 @@ import { AddExercise } from './AddExercise'
 import { ExerciseList } from './ExerciseList'
 
 export class EditCategoryScreen extends PureComponent {
-  static navigationOptions = ({ navigation }) => ({
-    title: 'Edit Category'
-  })
   render () {
     // The screen's current route is passed in to `props.navigation.state`:
     const { state, navigate } = this.props.navigation

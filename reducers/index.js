@@ -1,4 +1,4 @@
-import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE, DELETE_EXERCISE } from '../constants'
+import { ADD_CATEGORY, ADD_EXERCISE, UPDATE_EXERCISE, DELETE_EXERCISE, DELETE_CATEGORY } from '../constants'
 import { combineReducers } from 'redux'
 
 const exercise = (state = {}, action) => {
@@ -57,6 +57,8 @@ const categories = (state = [], action) => {
         ...state,
         category(undefined, action)
       ]
+    case DELETE_CATEGORY:
+      return state.filter((i) => i.id !== action.categoryId)
     case DELETE_EXERCISE:
     case ADD_EXERCISE:
     case UPDATE_EXERCISE:
